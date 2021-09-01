@@ -6,11 +6,11 @@ docker push indermittal/multi-client:latest
 docker push indermittal/multi-server:latest
 docker push indermittal/multi-worker:latest
 
-docker push indermittal/multi-client:$SHA 
-docker push indermittal/multi-server:$SHA 
-docker push indermittal/multi-worker:$SHA 
+docker push indermittal/multi-client:$SHA
+docker push indermittal/multi-server:$SHA
+docker push indermittal/multi-worker:$SHA
 
 kubectl apply -f k8s
 kubectl set image deployments/server-deployment server=indermittal/multi-server:$SHA
-kubectl set image deployments/client-deployment server=indermittal/multi-client:$SHA
-kubectl set image deployments/worker-deployment server=indermittal/multi-worker:$SHA
+kubectl set image deployments/client-deployment client=indermittal/multi-client:$SHA
+kubectl set image deployments/worker-deployment worker=indermittal/multi-worker:$SHA
